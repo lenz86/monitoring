@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1">
+    <title>Monitoring Server Authorization</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1" th:href="@{/css/style.css?V1.1}">
+    <link rel="stylesheet" type="text/css" href="/static/css/auth_style.css?V1.1" th:href="@{/css/auth_style.css?V1.1}">
+</head>
+<body>
+
+<div class="row">
+    <div class="container text-center">
+        <div class="window_auth">
+            <form th:action="@{/login}" method="post">
+            <div class="panel panel-primary">
+                <div class="panel-heading"> Authorization Monitoring Server </div>
+                <div class="panel-body">
+                    <div class="col-sm-12 input-def text-left">
+                        <p>Login</p>
+                        <input type="text" name="username" maxlength="25" class="form-control" placeholder="Login" title="Login">
+                    </div>
+                    <div class="col-sm-12 input-def text-left">
+                        <p>Password</p>
+                        <input type="password" name="password" maxlength="25" class="form-control" placeholder="Password" title="Password">
+                    </div>
+                    <div class="input-def" th:if="${param.error}">
+                        Invalid username and password.
+                    </div>
+                    <div class="input-def" th:if="${param.logout}">
+                        You have been logged out.
+                    </div>
+                </div>
+                <div class="panel-footer text-right">
+                        <div><input type="submit" class="btn btn-success" value="Sign In"/></div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

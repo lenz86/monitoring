@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1">
+    <title>Sensors</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1.6_0" th:href="@{/css/style.css?V1.1.6_0}">
+<!--        <link rel="stylesheet" type="text/css" href="/static/css/mycss.css" th:href="@{/css/mycss.css}">-->
+
+</head>
+<body>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>ADD SENSOR</p>
+        <div class="container mt-5">
+            <form method="post">
+                <p><input type="text" name="name" placeholder="Введите название датчика" /></p>
+                <p><input type="text" name="factoryID" placeholder="Введите заводской номер датчика" /></p>
+                <p><input type="text" name="version" placeholder="Введите версию ПО" /></p>
+                <p><input type="text" name="port" placeholder="Введите номер порта" /></p>
+                <p><input type="text" name="address" placeholder="Введите логический адрес" /></p>
+                <p><button type="submit">Добавить датчик</button></p>
+            </form>
+        </div>
+    </div>
+</div>
+<header th:insert="blocks/header :: header"></header>
+<div class="container page">
+    <div class="col-sm-12">
+        <div class="col-sm-12 padding0" style="margin-top: 2rem;">
+            <div class="left_devices_panel">
+                <div id="callback-button" title="add new Device"
+                     class='btn '
+                     style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
+                        class="fa fa-plus"></span> Add new device
+                </div>
+            </div>
+            <div class="right_devices_panel">
+                <table class="table table-big device_table" id='tableDevicesList'>
+                    <thead>
+                    <th class="pointer">Sensor name<span></span></th>
+                    <th class="pointer">FactoryID <span></span></th>
+                    <th class="pointer">Version<span></span></th>
+                    <th class="pointer">COM Port<span></span></th>
+                    <th class="pointer">Address<span></span></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th class="pointer" style="opacity: 0; max-width: 0px;">Group</th>
+                    </thead>
+                    <tbody>
+                    <tr class="tr-left tr-interactive" th:each="element : ${sensors}">
+                        <td data-tableexport-msonumberformat='\@' th:text="${element.name}"/>
+                        <td data-tableexport-msonumberformat='\@' th:text="${element.factoryID}"/>
+                        <td class="time_td_table" th:text="${element.version}"/>
+                        <td class="time_td_table" th:text="${element.port}"/>
+                        <td class="time_td_table" th:text="${element.address}"/>
+
+                        <td data-tableexport-display="none" class="pointer" ng-show="command_list_cookie.get_devices"
+                            ng-disabled='!validPositionDevice(device)' ng-click="select_device_for_map(device)"><span
+                                class="glyphicon glyphicon-eye-open" title="Detail info"></span></td>
+                        <td data-tableexport-display="none" ng-show="command_list_cookie.send_data" class="pointer"
+                            ng-click="select_device_send_data(device.devEui)" title="Send data to device"><span
+                                class="glyphicon glyphicon-send "></span></td>
+                        <td data-tableexport-display="none" ng-show="command_list_cookie.manage_devices" class="pointer"
+                            ng-click="select_device(device.devEui)"><span class="glyphicon glyphicon-cog"
+                                                                          title="Edit"></span></td>
+                        <td data-tableexport-display="none" class="pointer" title="Delete device"
+                            ng-show="command_list_cookie.delete_devices" ng-click="removeDevice(device.devEui)"><span
+                                class="glyphicon glyphicon-remove-sign"></span></td>
+                        <td data-tableexport-msonumberformat='\@' style="opacity: 0; max-width: 0px;"
+                            class="quick-td-table">
+                            <label class="quick-label-table">{{device.tempGroup}}</label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="container mt-5">-->
+
+
+<!--<div class="container mt-5">-->
+<!--        <h1>Датчики</h1>-->
+<!--        <div th:each="element : ${sensors}">-->
+<!--            <h3 th:text="${element.name}"/>-->
+<!--            <h3 th:text="${element.factoryID}"/>-->
+<!--            <h3 th:text="${element.version}"/>-->
+<!--            <h3 th:text="${element.port}"/>-->
+<!--            <h3 th:text="${element.address}"/>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <button id="callback-button">ДОБАВИТЬ ДАТЧИК</button>-->
+<!--    <div id="myModal" class="modal">-->
+<!--        <div class="modal-content">-->
+<!--            <span class="close">&times;</span>-->
+<!--            <p>Модальное окно!</p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--</div>-->
+</body>
+<script src="/js/script.js" th:href="@{/js/script.js}"></script>
+</html>

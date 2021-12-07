@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1">
+    <title>Sensors Add</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1.6_0" th:href="@{/css/style.css?V1.1.6_0}">
+
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <form method="post">
+        <input type="text" name="name" placeholder="Введите название датчика" />
+        <input type="text" name="factoryID" placeholder="Введите заводской номер датчика" />
+        <input type="text" name="version" placeholder="Введите версию ПО" />
+        <input type="text" name="port" placeholder="Введите номер порта" />
+        <input type="text" name="address" placeholder="Введите логический адрес" />
+        <button type="submit">Добавить датчик</button>
+    </form>
+    <div class="container mt-5">
+        <h1>Датчики</h1>
+        <div th:each="element : ${sensors}">
+            <h3 th:text="${element.name}"/>
+            <h3 th:text="${element.factoryID}"/>
+            <h3 th:text="${element.version}"/>
+            <h3 th:text="${element.port}"/>
+            <h3 th:text="${element.address}"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
