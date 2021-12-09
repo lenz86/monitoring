@@ -17,6 +17,7 @@
         <p>ADD SENSOR</p>
         <div class="container mt-5">
             <form method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <p><input type="text" name="name" placeholder="Введите название датчика" /></p>
                 <p><input type="text" name="factoryID" placeholder="Введите заводской номер датчика" /></p>
                 <p><input type="text" name="version" placeholder="Введите версию ПО" /></p>

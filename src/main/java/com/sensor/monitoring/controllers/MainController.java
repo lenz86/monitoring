@@ -31,27 +31,6 @@ public class MainController {
         return "sensors";
     }
 
-    @GetMapping("/sensors/add")
-    public String sensorsAdd(Model model) {
-        return "sensors-add";
-    }
-
-    @GetMapping("/sensors2")
-    public String sensors2Add(Model model) {
-        return "sensors2";
-    }
-
-//    @PostMapping("/sensorsadd")
-//    public String sensorsPostAdd (@RequestParam String name, @RequestParam int factoryID, @RequestParam String version,
-//                             int port, int address,  Model model ){
-//        Sensor sensor = new  Sensor(name, factoryID, version, port, address);
-//        sensorsRepo.save(sensor);
-//        Iterable<Sensor> sensors = sensorsRepo.findAll();
-//        model.addAttribute("sensors", sensors);
-//        return "redirect:/sensors";
-//    }
-
-
     @PostMapping("/sensors")
     public String addSensor (@RequestParam String name, @RequestParam int factoryID, @RequestParam String version,
                              int port, int address, Map<String, Object> model) {
@@ -61,5 +40,6 @@ public class MainController {
         model.put("sensors", sensors);
         return "sensors";
     }
+
 
 }
