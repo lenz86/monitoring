@@ -4,16 +4,16 @@
             <div class="col-sm-12">
                 <form th:action="@{/logout}" method="post">
                     <a href="/" style="text-decoration: none">
-                <div class="btn btn-header">Home</div>
+                        <div class="btn btn-header">Home</div>
                     </a>
                     <a href="/sensors" style="text-decoration: none">
-                <div class="btn btn-header">Sensors</div>
+                        <div class="btn btn-header">Sensors</div>
                     </a>
-<!--                    <a href="/sensors" style="text-decoration: none">-->
-                <div class="btn btn-header">Settings</div>
-<!--                    </a>-->
-                <div ng-show="command_list_cookie.get_users" class="btn btn-header" ng-class="check_page==4?'btn-header-active':''" ng-click="check_page=4;">Users</div>
-                <div class="btn btn-header ng-hide" ng-show="WS.logs.count>0" ng-class="check_page==7?'btn-header-active':''" ng-click="check_page=7;">Console</div>
+                    <div class="btn btn-header">Settings</div>
+                    <a href="/users" style="text-decoration: none">
+                        <div class="btn btn-header">Users</div>
+                    </a>
+                    <div class="btn btn-header">Console</div>
                     <div class="btn btn-header" onClick="javascript:this.parentNode.submit();">
                         Sign Out
                     </div>

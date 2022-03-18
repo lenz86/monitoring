@@ -16,19 +16,20 @@
 <div class="row">
     <div class="container text-center">
         <div class="window_auth">
-            <form th:action="@{/registration}" method="post">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <div class="panel panel-primary">
                 <div class="panel-heading"> Sign up for authorization in Monitoring Service </div>
                 <div class="panel-body">
-                    <div class="col-sm-12 input-def text-left">
-                        <p>User name</p>
-                        <input type="text" name="username" maxlength="25" class="form-control" placeholder="Name for new user" title="Login">
-                    </div>
-                    <div class="col-sm-12 input-def text-left">
-                        <p>Password</p>
-                        <input type="password" name="password" id="password" maxlength="25" class="form-control" placeholder="Password" title="Password" th:onkeyup="check();">
-                    </div>
+                    <form id="auth" th:action="@{/registration}" method="post">
+                        <div class="col-sm-12 input-def text-left">
+                            <p>User name</p>
+                            <input type="text" name="username" form="auth" maxlength="25" class="form-control" placeholder="Name for new user" title="Login">
+                        </div>
+                        <div class="col-sm-12 input-def text-left">
+                            <p>Password</p>
+                            <input type="password" name="password" id="password" form="auth" maxlength="25" class="form-control" placeholder="Password" title="Password" th:onkeyup="check();">
+                        </div>
+                    </form>
                     <div class="col-sm-12 input-def text-left">
                         <p>Confirm password</p>
                         <input type="password" name="password" id="password_confirm" maxlength="25" class="form-control" placeholder="Confirm password" title="Password" th:onkeyup="check();">
@@ -37,16 +38,15 @@
                         <p id="message-test"></p>
                     </div>
                     <div class="input-def" th:if="${message}">
-                        <p th:text="${message}"/>
+                        <p style="color: red;" th:text="${message}"/>
                     </div>
                 </div>
                 <div class="panel-footer text-right">
-                        <div>
-                            <input type="submit" class="btn btn-success" value="Sign Up"/>
-                        </div>
+                    <div>
+                        <input type="submit" form="auth" id="sign_up_btn" class="btn btn-success" value="Sign Up" disabled/>
+                    </div>
                 </div>
             </div>
-            </form>
             <div>
                 Already have an account?
                 <a href="/login">Sign in!</a>

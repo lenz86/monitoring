@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1.6_0" th:href="@{/css/style.css?V1.1.6_0}">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container page">
+    <div class="col-sm-12">
+        <div class="col-sm-12 padding0" style="margin-top: 2rem;">
+            <div class="left_devices_panel">
+                <div id="callback-button" title="add new Device"
+                     class='btn '
+                     style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
+                        class="fa fa-plus"></span> Add new user
+                </div>
+            </div>
+            <div class="right_devices_panel">
+                <table class="table table-big device_table" id='tableDevicesList'>
+                    <thead>
+                    <th class="pointer">User ID<span></span></th>
+                    <th class="pointer">Username <span></span></th>
+                    <th class="pointer">Password<span></span></th>
+                    <th class="pointer">User role<span></span></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th class="pointer" style="opacity: 0; max-width: 0px;">Group</th>
+                    </thead>
+                    <tbody>
+                    <tr class="tr-left tr-interactive" th:each="element : ${users}">
+                        <td class="time_td_table" th:text="${element?.id}"/>
+                        <td class="time_td_table" th:text="${element?.username}"/>
+                        <td class="time_td_table" th:text="${element?.password}"/>
+                        <td class="time_td_table" th:text="none"/>
+                        <td data-tableexport-display="none" class="pointer" ng-show="command_list_cookie.get_devices"
+                            ng-disabled='!validPositionDevice(device)' ng-click="select_device_for_map(device)"><span
+                                class="glyphicon glyphicon-eye-open" title="Detail info"></span></td>
+                        <td data-tableexport-display="none" ng-show="command_list_cookie.send_data" class="pointer"
+                            ng-click="select_device_send_data(device.devEui)" title="Send data to device"><span
+                                class="glyphicon glyphicon-send "></span></td>
+                        <td data-tableexport-display="none" ng-show="command_list_cookie.manage_devices" class="pointer"
+                            ng-click="select_device(device.devEui)"><span class="glyphicon glyphicon-cog"
+                                                                          title="Edit"></span></td>
+                        <td data-tableexport-display="none" class="pointer" title="Delete device"
+                            ng-show="command_list_cookie.delete_devices" ng-click="removeDevice(device.devEui)"><span
+                                class="glyphicon glyphicon-remove-sign"></span></td>
+                        <td data-tableexport-msonumberformat='\@' style="opacity: 0; max-width: 0px;"
+                            class="quick-td-table">
+                            <label class="quick-label-table">{{device.tempGroup}}</label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

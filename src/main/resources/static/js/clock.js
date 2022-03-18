@@ -1,9 +1,10 @@
 /*global window*/
 (function (global) {
     "use strict";
-    function Clock(el) {
+    function Clock(el1, el2) {
         var document = global.document;
-        this.el = document.getElementById(el);
+        this.el1 = document.getElementById(el1);
+        this.el2 = document.getElementById(el2);
         this.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         this.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     }
@@ -25,9 +26,10 @@
         minute = this.addZero(now.getMinutes());
         second = this.addZero(now.getSeconds());
         timezone = now.getTimezoneOffset();
-        result = year + " " + hour + ":" + minute + ":" + second + " " + this.days[dayNo] + ", " + day + " " + this.months[month] + timezone/60;
+        result = year + " " + hour + ":" + minute + ":" + second + " " + this.days[dayNo] + ", " + day + " " + this.months[month];
         self = this;
-        self.el.innerHTML = result;
+        self.el1.innerHTML = result;
+        self.el2.innerHTML = "UTC: " + timezone/60;
         global.setTimeout(function () {
             self.updateClock();
         }, 1000);
@@ -48,7 +50,7 @@ function addEvent(elm, evType, fn, useCapture) {
 
 addEvent(window, "load", function () {
     if (document.getElementById("clock")) {
-        var clock = new Clock("clock");
+        var clock = new Clock("clock", "timeZone");
         clock.updateClock();
     }
 });

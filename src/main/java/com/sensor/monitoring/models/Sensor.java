@@ -1,80 +1,77 @@
 package com.sensor.monitoring.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "incl")
 public class Sensor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
-    private int factoryID;
+    private String factoryId;
     private String version;
-    private int port;
-    private int address;
+    private String port;
+    private String address;
 
     public Sensor() {
     }
 
-    public Sensor(String name, int factoryID, String version, int port, int address) {
+    public Sensor(String name, String factoryId, String version, String port, String address) {
         this.name = name;
-        this.factoryID = factoryID;
+        this.factoryId = factoryId;
         this.version = version;
         this.port = port;
         this.address = address;
     }
 
-
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getFactoryID() {
-        return factoryID;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public int getAddress() {
-        return address;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setFactoryID(int factoryID) {
-        this.factoryID = factoryID;
+    public String getFactoryID() {
+        return factoryId;
+    }
+
+    public void setFactoryID(String factoryID) {
+        this.factoryId = factoryID;
+    }
+
+    public String getVersion() {
+        return version;
     }
 
     public void setVersion(String version) {
         this.version = version;
     }
 
-    public void setPort(int port) {
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
         this.port = port;
     }
 
-    public void setAddress(int address) {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
         this.address = address;
     }
+
 }
