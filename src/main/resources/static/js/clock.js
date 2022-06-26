@@ -1,6 +1,7 @@
 /*global window*/
 (function (global) {
     "use strict";
+
     function Clock(el1, el2) {
         var document = global.document;
         this.el1 = document.getElementById(el1);
@@ -8,6 +9,7 @@
         this.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         this.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     }
+
     Clock.prototype.addZero = function (i) {
         if (i < 10) {
             i = "0" + i;
@@ -29,7 +31,11 @@
         result = year + " " + hour + ":" + minute + ":" + second + " " + this.days[dayNo] + ", " + day + " " + this.months[month];
         self = this;
         self.el1.innerHTML = result;
-        self.el2.innerHTML = "UTC: " + timezone/60;
+        if (timezone / -60 > 0) {
+            self.el2.innerHTML = "UTC: +" + timezone / -60 + ":00";
+        } else {
+            self.el2.innerHTML = "UTC: " + timezone / -60 + ":00";
+        }
         global.setTimeout(function () {
             self.updateClock();
         }, 1000);
