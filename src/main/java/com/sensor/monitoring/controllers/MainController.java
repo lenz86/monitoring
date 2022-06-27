@@ -65,4 +65,10 @@ public class MainController {
         Values values = valuesRepo.lastValues(sensorId);
         return values;
     }
+
+    @GetMapping("/sensors_location")
+    public String users() {
+
+        return "sensors-location";
+    }
 }
