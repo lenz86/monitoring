@@ -36,6 +36,7 @@ public class MainController {
     }
 
 
+
     @GetMapping("/sensors")
     public String sensors(Model model) {
         Iterable<Sensor> sensors = inclRepo.findAll();

@@ -4,6 +4,7 @@ import com.sensor.monitoring.models.Values;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface ValuesRepo extends CrudRepository<Values, Long> {
@@ -14,6 +15,7 @@ public interface ValuesRepo extends CrudRepository<Values, Long> {
 
 
     @Query(value = "select v from Values v where v.sensorId = ?1 and v.date = (select max(date) from Values where sensorId = ?1)")
+    @Transactional
     Values lastValues(Long sensorId);
 
 }

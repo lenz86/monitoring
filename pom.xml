@@ -37,6 +37,15 @@
             <optional>true</optional>
         </dependency>
 
+
+        <!-- SPRING BOOT WEB SOCKET -->
+        <!-- ========================================== -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <!-- ========================================== -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
