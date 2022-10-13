@@ -18,24 +18,32 @@
     </properties>
     <dependencies>
 
-        <!-- web -->
-
+        <!-- SPRING BOOT THYMELEAF -->
+        <!-- ========================================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!-- ========================================== -->
 
+
+        <!-- SPRING BOOT STARTER WEB -->
+        <!-- ========================================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
+        <!-- SPRING BOOT DEVTOOLS -->
+        <!-- ========================================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        <!-- ========================================== -->
 
 
         <!-- SPRING BOOT WEB SOCKET -->
@@ -46,39 +54,54 @@
         </dependency>
         <!-- ========================================== -->
 
+
+        <!-- SPRING BOOT TEST -->
+        <!-- ========================================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- ========================================== -->
 
-        <!-- security -->
 
+        <!-- SPRING SECURITY STARTER -->
+        <!-- ========================================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <!-- ========================================== -->
 
+
+        <!-- SPRING SECURITY TEST -->
+        <!-- ========================================== -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- ========================================== -->
 
-        <!-- Data Base -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+
+        <!-- SPRING DATA JPA -->
+        <!-- ========================================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>2.3.12.RELEASE</version>
         </dependency>
+        <!-- ========================================== -->
 
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+
+        <!-- POSTGRESQL - FOR CONNECTION TO DB -->
+        <!-- ========================================== -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.27</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.4.0</version>
         </dependency>
+        <!-- ========================================== -->
 
 
     </dependencies>

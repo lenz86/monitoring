@@ -10,7 +10,7 @@
     <script type="text/javascript" th:src="@{js/websock.js}"></script>
     <script type="text/javascript" th:src="@{js/sockjs.min.js}"></script>
     <script type="text/javascript" th:src="@{js/stomp.min.js}"></script>
-    <script src="/js/script.js" th:href="@{/js/script.js}"></script>
+
 </head>
 <body>
 <div id="myModal" class="modal">
@@ -37,7 +37,7 @@
     <div class="col-sm-12">
         <div class="col-sm-12 padding0" style="margin-top: 2rem;">
             <div class="left_devices_panel">
-                <div id="callback-button" onclick="connect()" title="add new Device"
+                <div id="callback-button" title="add new Device"
                      class='btn '
                      style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                         class="fa fa-plus"></span> Add new device
@@ -118,4 +118,5 @@
 
 <!--</div>-->
 </body>
+<script src="/js/script.js" th:href="@{/js/script.js}"></script>
 </html>

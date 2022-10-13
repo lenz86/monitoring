@@ -43,7 +43,9 @@ public class MainController {
         int i = 0;
         for (Sensor sensor : sensors) {
             List<Values> values = valuesRepo.findValuesBySensorId(sensor.getId());
-            res.add(values.get(values.size() - 1));
+            if (!values.isEmpty()) {
+                res.add(values.get(values.size() - 1));
+            }
             i += 1;
         }
         model.addAttribute("values", res);
