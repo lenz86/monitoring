@@ -36,7 +36,6 @@ public class MainController {
     }
 
 
-
     @GetMapping("/sensors")
     public String sensors(Model model) {
         Iterable<Sensor> sensors = inclRepo.findAll();
@@ -44,7 +43,7 @@ public class MainController {
         int i = 0;
         for (Sensor sensor : sensors) {
             List<Values> values = valuesRepo.findValuesBySensorId(sensor.getId());
-            res.add(values.get(i));
+            res.add(values.get(values.size() - 1));
             i += 1;
         }
         model.addAttribute("values", res);
@@ -68,8 +67,9 @@ public class MainController {
     }
 
     @GetMapping("/sensors_location")
-    public String users() {
-
+    public String sensorsLocation(Model model) {
+        Iterable<Sensor> sensors = inclRepo.findAll();
+        model.addAttribute("sensors", sensors);
         return "sensors-location";
     }
 }

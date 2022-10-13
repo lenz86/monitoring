@@ -101,38 +101,16 @@
                     <tbody>
                     <tr class="tr-table-statistics ng-scope" colspan="2">
                         <td>
-                        <table>
-                            <tr colspan="1" class="head-td-table-statistics"
-                                style="font-family: Museo Sans Cyrl;text-align: left">
-                                <img class="img_construct" src="./images/free-icon-font-dashboard-3914555.png"
-                                     width="32"
-                                     height="32">
-                            </tr>
-                            <tr colspan="1" class="head-td-table-statistics"
-                                style="font-family: Museo Sans Cyrl;text-align: left">
-                                <img class="img_construct" src="./images/free-icon-font-dashboard-3914555.png"
-                                     width="32"
-                                     height="32">
-                            </tr>
-                            <tr colspan="1" class="head-td-table-statistics"
-                                style="font-family: Museo Sans Cyrl;text-align: left">
-                                <img class="img_construct" src="./images/free-icon-font-dashboard-3914555.png"
-                                     width="32"
-                                     height="32">
-                            </tr>
-                            <tr colspan="1" class="head-td-table-statistics"
-                                style="font-family: Museo Sans Cyrl;text-align: left">
-                                <img class="img_construct" src="./images/free-icon-font-dashboard-3914555.png"
-                                     width="32"
-                                     height="32">
-                            </tr>
-                            <tr colspan="1" class="head-td-table-statistics"
-                                style="font-family: Museo Sans Cyrl;text-align: left">
-                                <img class="img_construct" src="./images/free-icon-font-dashboard-3914555.png"
-                                     width="32"
-                                     height="32">
-                            </tr>
-                        </table>
+                            <table class="table" th:each="element : ${sensors}">
+                                <tr>
+                                    <td border="1" >
+                                    <img src="./images/free-icon-font-dashboard-3914555.png"
+                                         width="32"
+                                         height="32">
+                                    </td>
+                                    <td border="1" th:text="${element?.factoryID}" />
+                                </tr>
+                            </table>
                         </td>
                         <td rowspan="1" class="head-td-table-statistics"
                             style="font-family: Museo Sans Cyrl;text-align: center">
