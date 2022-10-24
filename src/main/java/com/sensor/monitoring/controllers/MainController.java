@@ -1,9 +1,11 @@
 package com.sensor.monitoring.controllers;
 
+import com.sensor.monitoring.models.MonitoringObject;
 import com.sensor.monitoring.models.Sensor;
 import com.sensor.monitoring.models.User;
 import com.sensor.monitoring.models.Values;
 import com.sensor.monitoring.repository.InclRepo;
+import com.sensor.monitoring.repository.ObjectRepo;
 import com.sensor.monitoring.repository.UserRepo;
 import com.sensor.monitoring.repository.ValuesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class MainController {
 
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private ObjectRepo objectRepo;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -53,6 +58,13 @@ public class MainController {
         return "sensors";
     }
 
+    @GetMapping("/sensors_location")
+    public String sensorsLocation(Model model) {
+        Iterable<Sensor> sensors = inclRepo.findAll();
+        model.addAttribute("sensors", sensors);
+        return "sensors-location";
+    }
+
     @GetMapping("/users")
     public String users(Model model) {
         List<User> users = userRepo.findAll();
@@ -60,18 +72,19 @@ public class MainController {
         return "users";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/sensors/wish")
-    public @ResponseBody
-    Values wish(final @RequestParam("name") String name) {
-        Long sensorId = Long.parseLong(name);
-        Values values = valuesRepo.lastValues(sensorId);
-        return values;
-    }
+//    @RequestMapping(method = RequestMethod.GET, value = "/sensors/wish")
+//    public @ResponseBody
+//    Values wish(final @RequestParam("name") String name) {
+//        Long sensorId = Long.parseLong(name);
+//        Values values = valuesRepo.lastValues(sensorId);
+//        return values;
+//    }
 
-    @GetMapping("/sensors_location")
-    public String sensorsLocation(Model model) {
-        Iterable<Sensor> sensors = inclRepo.findAll();
-        model.addAttribute("sensors", sensors);
-        return "sensors-location";
+
+    @GetMapping("/object")
+    public String objectInfo(Model model) {
+        Iterable<MonitoringObject> objects = objectRepo.findAll();
+        model.addAttribute("objects", objects);
+        return "object-info";
     }
 }

@@ -1567,6 +1567,12 @@ p {
     color: #337ab7
 }
 
+.text-header {
+    color: #231f20b3;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 a.text-primary:focus, a.text-primary:hover {
     color: #286090
 }
