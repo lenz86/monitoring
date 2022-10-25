@@ -36,6 +36,9 @@ public class Contact {
     @Column(name = "site")
     private String site;
 
+    @OneToOne(mappedBy = "contact", cascade = CascadeType.ALL)
+    private MonitoringObject monitoringObject;
+
     public Contact() {
     }
 
@@ -120,6 +123,14 @@ public class Contact {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public MonitoringObject getMonitoringObject() {
+        return monitoringObject;
+    }
+
+    public void setMonitoringObject(MonitoringObject monitoringObject) {
+        this.monitoringObject = monitoringObject;
     }
 
     @Override

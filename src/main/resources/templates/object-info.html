@@ -7,87 +7,90 @@
     <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1.6_0" th:href="@{/css/style.css?V1.1.6_0}">
 </head>
 <body>
-<!--<div id="myModal" class="modal">-->
-<!--    <div class="modal-content">-->
-<!--        <span class="close">&times;</span>-->
-<!--        <p>ADD OBJECT INFO</p>-->
-<!--        <div class="container mt-5">-->
-<!--            <form th:action="@{/object}" method="post">-->
-<!--                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
-<!--                <p><input type="text" name="name" placeholder="Object name"></p>-->
-<!--                <p><input type="text" name="organization" placeholder="Organization name"></p>-->
-<!--                <p><input type="text" name="floorsCount" placeholder="Floors count" ></p>-->
-<!--                <p><input type="text" name="sensorsCount" placeholder="Inclinometrs count"></p>-->
-<!--                <p><input type="text" name="inclCount" placeholder="Akselerometrs count"></p>-->
-<!--                <p><input type="text" name="akselCount" placeholder="Total sensors count"></p>-->
-<!--                <p>-->
-<!--                    <button type="submit">SAVE</button>-->
-<!--                </p>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <header th:insert="blocks/header :: header"></header>
 <div class="container page">
     <div class="col-sm-12">
         <div class="col-sm-12 padding0" style="margin-top: 2rem;">
             <div class="left_devices_panel">
-                <div id="callback-button" onclick="location.href='/object/add';" title="ADD NEW OBJECT"
-                     class='btn '
-                     style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
-                        class="fa fa-plus"></span> Add new object
-                </div>
-            </div>
-            <div class="input-def" th:if="${message}">
-                <p style="color: red;" th:text="${message}"/>
-            </div>
-            <div class="right_devices_panel">
                 <table class="table table-big device_table" id='tableDevicesList'>
                     <thead>
                     <th class="pointer">Object name<span></span></th>
-                    <th class="pointer">Organization name <span></span></th>
-                    <th class="pointer">Floors count<span></span></th>
-                    <th class="pointer">Inclinometrs count<span></span></th>
-                    <th class="pointer">Akselerometrs count<span></span></th>
-                    <th class="pointer">Total sensors count<span></span></th>
-                    <th data-tableexport-display="none"></th>
-                    <th data-tableexport-display="none"></th>
-                    <th data-tableexport-display="none"></th>
-                    <th data-tableexport-display="none"></th>
-                    <th class="pointer" style="opacity: 0; max-width: 0px;">Group</th>
                     </thead>
                     <tbody>
                     <tr class="tr-left tr-interactive" th:each="element : ${objects}">
-                        <td data-tableexport-msonumberformat='\@' th:text="${element?.name}"/>
-                        <td data-tableexport-msonumberformat='\@' th:text="${element?.organization}"/>
-                        <td class="time_td_table" th:text="${element?.floorsCount}"/>
-                        <td class="time_td_table" th:text="${element?.sensorsCount}"/>
-                        <td class="time_td_table" th:text="${element?.inclCount}"/>
-                        <td class="time_td_table" th:text="${element?.akselCount}"/>
-                        <td data-tableexport-display="none" class="pointer" ng-show="command_list_cookie.get_devices"
-                            ng-disabled='!validPositionDevice(device)' ng-click="select_device_for_map(device)"><span
-                                class="glyphicon glyphicon-eye-open" title="Detail info"></span></td>
-                        <td data-tableexport-display="none" ng-show="command_list_cookie.send_data" class="pointer"
-                            ng-click="select_device_send_data(device.devEui)" title="Send data to device"><span
-                                class="glyphicon glyphicon-send "></span></td>
-                        <td data-tableexport-display="none" ng-show="command_list_cookie.manage_devices" class="pointer"
-                            ng-click="select_device(device.devEui)"><span class="glyphicon glyphicon-cog"
-                                                                          title="Edit"></span></td>
-                        <td data-tableexport-display="none" class="pointer" title="Delete device"
-                            ng-show="command_list_cookie.delete_devices" ng-click="removeDevice(device.devEui)"><span
-                                class="glyphicon glyphicon-remove-sign"></span></td>
-                        <td data-tableexport-msonumberformat='\@' style="opacity: 0; max-width: 0px;"
-                            class="quick-td-table">
-                            <label class="quick-label-table">{{device.tempGroup}}</label>
-                        </td>
+                        <td class="pointer" data-tableexport-msonumberformat='\@' th:text="${element?.name}"
+                            th:onclick="|window.location.href='@{/object/update/{id}(id = ${element.id})}'|"></td>
                     </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div class="right_devices_panel">
+                <div class="container mt-5">
+                    <form th:action="@{/object/add}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <p class="text-header">OBJECT INFORMATION</p>
+                        <p class="text-header"> Object name:</p>
+                        <p><input type="text" size="40" name="name" placeholder="Object name"
+                                  th:value="${objectForUpdate?.name}"></p>
+                        <p class="text-header"> Organization name:</p>
+                        <p><input type="text" size="40" name="organization" placeholder="Organization name"
+                                  th:value="${objectForUpdate?.organization}"></p>
+                        <p class="text-header"> Floors count:</p>
+                        <p><input type="text" size="40" name="floorsCount" placeholder="Floors count"
+                                  th:value="${objectForUpdate?.floorsCount}"></p>
+                        <p class="text-header"> Inclinometrs count:</p>
+                        <p><input type="text" size="40" name="sensorsCount" placeholder="Inclinometrs count"
+                                  th:value="${objectForUpdate?.sensorsCount}"></p>
+                        <p class="text-header"> Akselerometrs count:</p>
+                        <p><input type="text" size="40" name="inclCount" placeholder="Akselerometrs count"
+                                  th:value="${objectForUpdate?.inclCount}"></p>
+                        <p class="text-header"> Total sensors count:</p>
+                        <p><input type="text" size="40" name="akselCount" placeholder="Total sensors count"
+                                  th:value="${objectForUpdate?.akselCount}"></p>
+                        <br><br>
+                        <p class="text-header">CONTACTS</p>
+                        <p class="text-header"> Country:</p>
+                        <p><input type="text" size="40" name="country" placeholder="Country"
+                                  th:value="${objectForUpdate?.contact?.country}"></p>
+                        <p class="text-header"> City:</p>
+                        <p><input type="text" size="40" name="city" placeholder="City"
+                                  th:value="${objectForUpdate?.contact?.city}"></p>
+                        <p class="text-header"> Street:</p>
+                        <p><input type="text" size="40" name="street" placeholder="Street"
+                                  th:value="${objectForUpdate?.contact?.street}"></p>
+                        <p class="text-header"> Building number:</p>
+                        <p><input type="text" size="40" name="houseNumber" placeholder="Building number"
+                                  th:value="${objectForUpdate?.contact?.houseNumber}"></p>
+                        <p class="text-header"> Postal code:</p>
+                        <p><input type="text" size="40" name="postalCode" placeholder="Postal code"
+                                  th:value="${objectForUpdate?.contact?.postalCode}"></p>
+                        <p class="text-header"> Phone number:</p>
+                        <p><input type="text" size="40" name="phoneNumber" placeholder="Phone number"
+                                  th:value="${objectForUpdate?.contact?.phoneNumber}"></p>
+                        <p class="text-header"> Email:</p>
+                        <p><input type="text" size="40" name="email" placeholder="Email"
+                                  th:value="${objectForUpdate?.contact?.email}"></p>
+                        <p class="text-header"> Site:</p>
+                        <p><input type="text" size="40" name="site" placeholder="Site"
+                                  th:value="${objectForUpdate?.contact?.site}"></p>
+                        <button id="save-button" type="submit" title="Save object"
+                                class='btn'
+                                style=' background: #4ea5ef; color:white; margin-right: 2rem'><span
+                                class="fa fa-plus"></span> Save object
+                        </button>
+                        <br>
+                        <div class="input-def" th:if="${message}">
+                            <p style="color: red;" th:text="${message}"/>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
 
 </body>
-<!--<script src="/js/script.js" th:href="@{/js/script.js}"></script>-->
 </html>

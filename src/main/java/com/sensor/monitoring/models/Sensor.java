@@ -42,11 +42,11 @@ public class Sensor {
         this.name = name;
     }
 
-    public String getFactoryID() {
+    public String getFactoryId() {
         return factoryId;
     }
 
-    public void setFactoryID(String factoryID) {
+    public void setFactoryId(String factoryID) {
         this.factoryId = factoryID;
     }
 

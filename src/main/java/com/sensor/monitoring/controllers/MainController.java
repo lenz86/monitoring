@@ -58,6 +58,21 @@ public class MainController {
         return "sensors";
     }
 
+    @PostMapping("/sensors")
+    public String addSensor(Sensor sensor, Model model) {
+        Sensor sensorFromDB = inclRepo.findByFactoryId(sensor.getFactoryId());
+        if (sensorFromDB != null) {
+            Iterable<Sensor> sensors = inclRepo.findAll();
+            model.addAttribute("message", "Inclinometer with this FactoryId is already exist!");
+            model.addAttribute("sensors", sensors);
+            return "sensors";
+        }
+        inclRepo.save(sensor);
+        Iterable<Sensor> sensors = inclRepo.findAll();
+        model.addAttribute("sensors", sensors);
+        return "sensors";
+    }
+
     @GetMapping("/sensors_location")
     public String sensorsLocation(Model model) {
         Iterable<Sensor> sensors = inclRepo.findAll();
@@ -85,6 +100,6 @@ public class MainController {
     public String objectInfo(Model model) {
         Iterable<MonitoringObject> objects = objectRepo.findAll();
         model.addAttribute("objects", objects);
-        return "object-info";
+        return "object";
     }
 }

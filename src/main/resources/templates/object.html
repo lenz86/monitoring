@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Object info</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1.6_0" th:href="@{/css/style.css?V1.1.6_0}">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container page">
+    <div class="col-sm-12">
+        <div class="col-sm-12 padding0" style="margin-top: 2rem;">
+            <div class="left_devices_panel">
+                <div id="callback-button" onclick="location.href='/object/add';" title="ADD NEW OBJECT"
+                     class='btn '
+                     style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
+                        class="fa fa-plus"></span> New object
+                </div>
+            </div>
+            <div class="input-def" th:if="${message}">
+                <p style="color: red;" th:text="${message}"/>
+            </div>
+            <div class="right_devices_panel">
+                <table class="table table-big device_table" id='tableDevicesList'>
+                    <thead>
+                    <th class="pointer">Object name<span></span></th>
+                    <th class="pointer">Organization name <span></span></th>
+                    <th class="pointer">Floors count<span></span></th>
+                    <th class="pointer">Inclinometrs count<span></span></th>
+                    <th class="pointer">Akselerometrs count<span></span></th>
+                    <th class="pointer">Total sensors count<span></span></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th data-tableexport-display="none"></th>
+                    <th class="pointer" style="opacity: 0; max-width: 0px;">Group</th>
+                    </thead>
+                    <tbody>
+                    <tr class="tr-left tr-interactive" th:each="element : ${objects}">
+                        <td data-tableexport-msonumberformat='\@' th:text="${element?.name}"/>
+                        <td data-tableexport-msonumberformat='\@' th:text="${element?.organization}"/>
+                        <td class="time_td_table" th:text="${element?.floorsCount}"/>
+                        <td class="time_td_table" th:text="${element?.sensorsCount}"/>
+                        <td class="time_td_table" th:text="${element?.inclCount}"/>
+                        <td class="time_td_table" th:text="${element?.akselCount}"/>
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/sensors_location}'|"
+                        ><span
+                                class="glyphicon glyphicon-eye-open" title="Detail info"></span></td>
+                        <td data-tableexport-display="none" class="pointer"><span
+                                class="glyphicon glyphicon-send" title="Notification"></span></td>
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/object/update/{id}(id = ${element.id})}'|"
+                        ><span class="glyphicon glyphicon-cog"
+                               title="Edit"></span></td>
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/object/delete/{id}(id = ${element.id})}'|"
+                        ><span
+                                class="glyphicon glyphicon-remove-sign" title="Delete object"></span></td>
+                        <td data-tableexport-msonumberformat='\@' style="opacity: 0; max-width: 0px;"
+                            class="quick-td-table">
+                            <label class="quick-label-table">{{device.tempGroup}}</label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
