@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1">
+    <title>Functionality in developing</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1.6_0" th:href="@{/css/style.css?V1.1.6_0}">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="page" id="page_map" ng-show="check_page==5">
+    <div class="col-sm-12 padding0">
+        <div class="col-sm-3 ">
+            <div class="col-sm-12 padding0" style="text-align: center">
+                <img class="img_logo_1" src="../static/images/logo/logo.png" th:src="@{/images/logo/logo.png}">
+            </div>
+        </div>
+        <div class="col-sm-9 padding0">
+            <div class="col-sm-12 padding0">
+                <br><br>
+                <h1 class="text-header-24">Functionality is not ready yet</h1>
+                <br>
+                <p class="text-header">Sorry, functionality is not ready yet and the page now in developing</p>
+                <br>
+                <p><a href="/">Go back to the home page</a></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

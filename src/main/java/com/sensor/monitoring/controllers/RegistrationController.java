@@ -22,7 +22,7 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("title", "Sign Up");
-        return "registration";
+        return "users/registration";
     }
 
 
@@ -31,7 +31,7 @@ public class RegistrationController {
         User userFromDb = userRepo.findByUsername(user.getUsername());
         if (userFromDb != null) {
             model.put("message", "Username is already exists!");
-            return "registration";
+            return "users/registration";
         }
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));

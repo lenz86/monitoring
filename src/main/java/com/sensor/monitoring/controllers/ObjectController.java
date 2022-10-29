@@ -21,18 +21,22 @@ public class ObjectController {
     public String objectInfo(Model model) {
         Iterable<MonitoringObject> objects = objectRepo.findAll();
         model.addAttribute("objects", objects);
-        return "object-info";
+        return "objects/object-info";
     }
 
     @PostMapping("/object/add")
     public String addObject(MonitoringObject monitoringObject, Contact contact, Model model) {
         MonitoringObject objectFromDB = objectRepo.findByName(monitoringObject.getName());
+        //Update if exist
         if (objectFromDB != null) {
-            model.addAttribute("message", "Object is already exist!");
+            monitoringObject.setId(objectFromDB.getId());
+            monitoringObject.setContact(contact);
             Iterable<MonitoringObject> objects = objectRepo.findAll();
             model.addAttribute("objects", objects);
-            return "object-info";
+            objectRepo.save(monitoringObject);
+            return "objects/object-info";
         }
+        //Save
         monitoringObject.setContact(contact);
         objectRepo.save(monitoringObject);
         return "redirect:/object";
@@ -50,7 +54,7 @@ public class ObjectController {
         MonitoringObject objectForUpdate = objectRepo.findById(id);
         model.addAttribute("objects", objects);
         model.addAttribute("objectForUpdate", objectForUpdate);
-        return "object-info";
+        return "objects/object-info";
     }
 
 

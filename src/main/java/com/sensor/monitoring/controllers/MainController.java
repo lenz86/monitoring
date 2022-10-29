@@ -40,6 +40,11 @@ public class MainController {
         return "home";
     }
 
+    @GetMapping("/in_developing")
+    public String inDeveloping() {
+        return "in-developing";
+    }
+
 
     @GetMapping("/sensors")
     public String sensors(Model model) {
@@ -55,7 +60,7 @@ public class MainController {
         }
         model.addAttribute("values", res);
         model.addAttribute("sensors", sensors);
-        return "sensors";
+        return "sensors/sensors";
     }
 
     @PostMapping("/sensors")
@@ -65,26 +70,26 @@ public class MainController {
             Iterable<Sensor> sensors = inclRepo.findAll();
             model.addAttribute("message", "Inclinometer with this FactoryId is already exist!");
             model.addAttribute("sensors", sensors);
-            return "sensors";
+            return "sensors/sensors";
         }
         inclRepo.save(sensor);
         Iterable<Sensor> sensors = inclRepo.findAll();
         model.addAttribute("sensors", sensors);
-        return "sensors";
+        return "sensors/sensors";
     }
 
     @GetMapping("/sensors_location")
     public String sensorsLocation(Model model) {
         Iterable<Sensor> sensors = inclRepo.findAll();
         model.addAttribute("sensors", sensors);
-        return "sensors-location";
+        return "sensors/sensors-location";
     }
 
     @GetMapping("/users")
     public String users(Model model) {
         List<User> users = userRepo.findAll();
         model.addAttribute("users", users);
-        return "users";
+        return "users/users";
     }
 
 //    @RequestMapping(method = RequestMethod.GET, value = "/sensors/wish")
@@ -100,6 +105,6 @@ public class MainController {
     public String objectInfo(Model model) {
         Iterable<MonitoringObject> objects = objectRepo.findAll();
         model.addAttribute("objects", objects);
-        return "object";
+        return "objects/object";
     }
 }

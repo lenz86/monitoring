@@ -71,18 +71,21 @@
                         <td id="axisX" class="time_td_table"/>
                         <td id="axisY" class="time_td_table"/>
                         <td id="dateTime" class="time_td_table"/>
-                        <td data-tableexport-display="none" class="pointer" ng-show="command_list_cookie.get_devices"
-                            ng-disabled='!validPositionDevice(device)' ng-click="select_device_for_map(device)"><span
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/in_developing}'|"
+                        ><span
                                 class="glyphicon glyphicon-eye-open" title="Detail info"></span></td>
-                        <td data-tableexport-display="none" ng-show="command_list_cookie.send_data" class="pointer"
-                            ng-click="select_device_send_data(device.devEui)" title="Send data to device"><span
-                                class="glyphicon glyphicon-send "></span></td>
-                        <td data-tableexport-display="none" ng-show="command_list_cookie.manage_devices" class="pointer"
-                            ng-click="select_device(device.devEui)"><span class="glyphicon glyphicon-cog"
-                                                                          title="Edit"></span></td>
-                        <td data-tableexport-display="none" class="pointer" title="Delete device"
-                            ng-show="command_list_cookie.delete_devices" ng-click="removeDevice(device.devEui)"><span
-                                class="glyphicon glyphicon-remove-sign"></span></td>
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/in_developing}'|"><span
+                                class="glyphicon glyphicon-send" title="Notification"></span></td>
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/in_developing}'|"
+                        ><span class="glyphicon glyphicon-cog"
+                               title="Edit"></span></td>
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/in_developing}'|"
+                        ><span
+                                class="glyphicon glyphicon-remove-sign" title="Delete device"></span></td>
                         <td data-tableexport-msonumberformat='\@' style="opacity: 0; max-width: 0px;"
                             class="quick-td-table">
                             <label class="quick-label-table">{{device.tempGroup}}</label>
@@ -95,5 +98,5 @@
     </div>
 </div>
 </body>
-<script src="/js/script.js" th:href="@{/js/script.js}"></script>
+<script src="/static/js/script.js" th:href="@{/js/script.js}"></script>
 </html>

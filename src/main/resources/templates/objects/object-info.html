@@ -31,7 +31,7 @@
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                         <p class="text-header">OBJECT INFORMATION</p>
                         <p class="text-header"> Object name:</p>
-                        <p><input type="text" size="40" name="name" placeholder="Object name"
+                        <p><input type="text" required size="40" name="name" placeholder="Object name"
                                   th:value="${objectForUpdate?.name}"></p>
                         <p class="text-header"> Organization name:</p>
                         <p><input type="text" size="40" name="organization" placeholder="Organization name"
@@ -71,7 +71,7 @@
                         <p class="text-header"> Email:</p>
                         <p><input type="text" size="40" name="email" placeholder="Email"
                                   th:value="${objectForUpdate?.contact?.email}"></p>
-                        <p class="text-header"> Site:</p>
+                        <p class="text-header"> WebSite:</p>
                         <p><input type="text" size="40" name="site" placeholder="Site"
                                   th:value="${objectForUpdate?.contact?.site}"></p>
                         <button id="save-button" type="submit" title="Save object"

@@ -1573,6 +1573,12 @@ p {
     font-weight: bold;
 }
 
+.text-header-24 {
+    color: #231f20b3;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 a.text-primary:focus, a.text-primary:hover {
     color: #286090
 }

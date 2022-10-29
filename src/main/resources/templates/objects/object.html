@@ -48,7 +48,8 @@
                             th:onclick="|window.location.href='@{/sensors_location}'|"
                         ><span
                                 class="glyphicon glyphicon-eye-open" title="Detail info"></span></td>
-                        <td data-tableexport-display="none" class="pointer"><span
+                        <td data-tableexport-display="none" class="pointer"
+                            th:onclick="|window.location.href='@{/in_developing}'|"><span
                                 class="glyphicon glyphicon-send" title="Notification"></span></td>
                         <td data-tableexport-display="none" class="pointer"
                             th:onclick="|window.location.href='@{/object/update/{id}(id = ${element.id})}'|"

@@ -15,7 +15,7 @@
     <div class="col-sm-12 padding0">
         <div class="col-sm-3 ">
             <div class="col-sm-12 padding0" style="text-align: center">
-                <img class="img_logo_1" src="./images/logo/logo.png">
+                <img class="img_logo_1" src="../static/images/logo/logo.png" th:src="@{/images/logo/logo.png}">
             </div>
             <div class="col-sm-12 padding0">
                 <table class="table table-statistics-no-borders">
@@ -104,7 +104,7 @@
                             <table class="table" th:each="element : ${sensors}">
                                 <tr>
                                     <td border="1" >
-                                    <img src="./images/free-icon-font-dashboard-3914555.png"
+                                    <img src="../static/images/free-icon-font-dashboard-3914555.png" th:src="@{/images/free-icon-font-dashboard-3914555.png}"
                                          width="32"
                                          height="32">
                                     </td>
@@ -114,7 +114,7 @@
                         </td>
                         <td rowspan="1" class="head-td-table-statistics"
                             style="font-family: Museo Sans Cyrl;text-align: center">
-                            <img src="./images/construct.png">
+                            <img src="../static/images/construct.png" th:src="@{/images/construct.png}">
                         </td>
                     </tr>
                     </tbody>
