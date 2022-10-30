@@ -10,7 +10,7 @@ function connect() {
 
 
 function onConnected() {
-    window.alert("Connected!")
+    // window.alert("Connected!")
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
 }
@@ -57,14 +57,14 @@ function setValuesIntoTable(message) {
     var rows = table.rows;
     var rowCount = rows.length;
     var cells;
-    var sensorId;
+    var sensorFactoryId;
 
     for (var r = 1; r < rowCount; r++) {
         var rowIndex = r;
         cells = rows[r].cells;
-        sensorId = cells[1].innerText;
+        sensorFactoryId = cells[0].innerText;
         for (var j = 0; j < message.data.length; j++) {
-            if (sensorId === message.data[j].factoryID) {
+            if (sensorFactoryId === message.data[j].factoryID) {
                 document.getElementById('tableDevicesList').rows[rowIndex].cells[5].innerHTML = message.data[j].axisX;
                 document.getElementById('tableDevicesList').rows[rowIndex].cells[6].innerHTML = message.data[j].axisY;
                 document.getElementById('tableDevicesList').rows[rowIndex].cells[7].innerHTML = localRateTimeConverter(message.regTime).toString();

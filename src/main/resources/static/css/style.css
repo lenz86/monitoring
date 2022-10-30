@@ -62,6 +62,12 @@ body, html, head {
     /*background: #ddd;*/
 }
 
+.head-td-table-statistics-20 {
+    font-weight: 700;
+    font-size: 20px;
+    /*background: #ddd;*/
+}
+
 .device_panel {
     margin: 0;
     padding: 1rem 0rem;

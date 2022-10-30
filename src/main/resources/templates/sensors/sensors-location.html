@@ -20,59 +20,95 @@
             <div class="col-sm-12 padding0">
                 <table class="table table-statistics-no-borders">
                     <tbody>
-                    <tr class="tr-table-statistics ng-scope" ng-if="command_list_cookie.server_info">
+                    <tr class="tr-table-statistics ng-scope">
                         <td colspan="2" class="head-td-table-statistics"
                             style="font-family: Museo Sans Cyrl;text-align: center" border="0">Building floors
                         </td>
                     </tr>
-                    <tr class="tr-table-statistics ng-scope" ng-if="command_list_cookie.server_info">
+                    <tr class="tr-table-statistics ng-scope">
                         <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
-                            <div id="floor-button1" title="5 floor"
+                            <div id="floor-button0" title="Main view"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = Main)}'|"
+                                 class='btn '
+                                 style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
+                                    class="fa fa-plus"></span> Main View
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tr-table-statistics ng-scope">
+                        <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
+                            <div id="floor-button1" title="7th floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = 7)}'|"
+                                 class='btn '
+                                 style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
+                                    class="fa fa-plus"></span> 7 floor
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tr-table-statistics ng-scope">
+                        <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
+                            <div id="floor-button2" title="6th floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = 6)}'|"
+                                 class='btn '
+                                 style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
+                                    class="fa fa-plus"></span> 6 floor
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tr-table-statistics ng-scope">
+                        <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
+                            <div id="floor-button3" title="5th floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = 5)}'|"
                                  class='btn '
                                  style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                                     class="fa fa-plus"></span> 5 floor
                             </div>
                         </td>
                     </tr>
-                    <tr class="tr-table-statistics ng-scope" ng-if="command_list_cookie.server_info">
+                    <tr class="tr-table-statistics ng-scope">
                         <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
-                            <div id="floor-button2" title="4 floor"
+                            <div id="floor-button4" title="4th floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = 4)}'|"
                                  class='btn '
                                  style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                                     class="fa fa-plus"></span> 4 floor
                             </div>
                         </td>
                     </tr>
-                    <tr class="tr-table-statistics ng-scope" ng-if="command_list_cookie.server_info">
+                    <tr class="tr-table-statistics ng-scope">
                         <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
-                            <div id="floor-button3" title="3 floor"
+                            <div id="floor-button5" title="3rd floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = 3)}'|"
                                  class='btn '
                                  style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                                     class="fa fa-plus"></span> 3 floor
                             </div>
                         </td>
                     </tr>
-                    <tr class="tr-table-statistics ng-scope" ng-if="command_list_cookie.server_info">
+                    <tr class="tr-table-statistics ng-scope">
                         <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
-                            <div id="floor-button4" title="2 floor"
+                            <div id="floor-button6" title="2nd floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = 2)}'|"
                                  class='btn '
                                  style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                                     class="fa fa-plus"></span> 2 floor
                             </div>
                         </td>
                     </tr>
-                    <tr class="tr-table-statistics ng-scope" ng-if="command_list_cookie.server_info">
+                    <tr class="tr-table-statistics ng-scope">
                         <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
-                            <div id="floor-button5" title="1 floor"
+                            <div id="floor-button7" title="1st floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = 1)}'|"
                                  class='btn '
                                  style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                                     class="fa fa-plus"></span> 1 floor
                             </div>
                         </td>
                     </tr>
-                    <tr class="tr-table-statistics ng-scope" ng-if="command_list_cookie.server_info">
+                    <tr class="tr-table-statistics ng-scope">
                         <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
-                            <div id="floor-button6" title="-1 floor"
+                            <div id="floor-button8" title="-1st floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = -1)}'|"
                                  class='btn '
                                  style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                                     class="fa fa-plus"></span> -1 floor
@@ -81,7 +117,8 @@
                     </tr>
                     <tr class="tr-table-statistics">
                         <td class="head-td-table-statistics" style="font-family: Museo Sans Cyrl">
-                            <div id="floor-button7" title="-2 floor"
+                            <div id="floor-button9" title="-2nd floor"
+                                 th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = -2)}'|"
                                  class='btn '
                                  style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                                     class="fa fa-plus"></span> -2 floor
@@ -95,30 +132,70 @@
         <div class="col-sm-9 padding0">
             <div class="col-sm-12 padding0">
                 <table class="table table-statistics">
-                    <caption class="head-td-table-statistics" style="font-family: Museo Sans Cyrl; text-align: center">
+                    <caption class="head-td-table-statistics-20"
+                             style="font-family: Museo Sans Cyrl; text-align: center" th:text="${title}">
                         Current floor
                     </caption>
                     <tbody>
                     <tr class="tr-table-statistics ng-scope" colspan="2">
-                        <td>
-                            <table class="table" th:each="element : ${sensors}">
-                                <tr>
-                                    <td border="1" >
-                                    <img src="../static/images/free-icon-font-dashboard-3914555.png" th:src="@{/images/free-icon-font-dashboard-3914555.png}"
-                                         width="32"
-                                         height="32">
-                                    </td>
-                                    <td border="1" th:text="${element?.factoryId}" />
-                                </tr>
-                            </table>
-                        </td>
                         <td rowspan="1" class="head-td-table-statistics"
                             style="font-family: Museo Sans Cyrl;text-align: center">
-                            <img src="../static/images/construct.png" th:src="@{/images/construct.png}">
+                            <img th:src="@{/images/plans/{floorName}.png(floorName=${floorName})}">
                         </td>
                     </tr>
                     </tbody>
                 </table>
+                <div class="col-sm-1 padding0">
+                </div>
+                <div class="col-sm-10 padding0">
+                    <table class="table table-statistics">
+                        <caption class="head-td-table-statistics-20"
+                                 style="font-family: Museo Sans Cyrl; text-align: center" th:text="Sensors">
+                        </caption>
+                        <thead>
+                        <th>Inclinometers</th>
+                        <th>Aksellerometers</th>
+                        </thead>
+                        <tbody>
+                        <tr class="tr-table-statistics ng-scope" colspan="2">
+                            <td>
+                            <table class="table" th:each="element : ${sensors}">
+                                <tr>
+                                    <td border="1">
+                                        <img src="../static/images/free-icon-font-dashboard-3914555.png"
+                                             th:src="@{/images/free-icon-font-dashboard-3914555.png}"
+                                             width="32"
+                                             height="32">
+                                    </td>
+                                    <td border="1" th:text="${element?.factoryId}"/>
+                                    <td border="1" th:text="${element?.name}"/>
+                                    <td></td>
+                                    <td>State: normal</td>
+                                </tr>
+                            </table>
+                        </td>
+                            <td>
+                                <table class="table" th:each="element : ${sensors}">
+                                    <tr>
+                                        <td border="1">
+                                            <img src="../static/images/free-icon-font-dashboard-3914555.png"
+                                                 th:src="@{/images/free-icon-font-dashboard-3914555.png}"
+                                                 width="32"
+                                                 height="32">
+                                        </td>
+                                        <td border="1" th:text="${element?.factoryId}"/>
+                                        <td border="1" th:text="${element?.name}"/>
+                                        <td></td>
+                                        <td>State: normal</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-1 padding0">
+                </div>
             </div>
 
         </div>

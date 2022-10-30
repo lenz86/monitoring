@@ -11,7 +11,8 @@ import com.sensor.monitoring.repository.ValuesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,12 +79,6 @@ public class MainController {
         return "sensors/sensors";
     }
 
-    @GetMapping("/sensors_location")
-    public String sensorsLocation(Model model) {
-        Iterable<Sensor> sensors = inclRepo.findAll();
-        model.addAttribute("sensors", sensors);
-        return "sensors/sensors-location";
-    }
 
     @GetMapping("/users")
     public String users(Model model) {

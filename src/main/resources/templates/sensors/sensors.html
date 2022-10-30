@@ -37,7 +37,7 @@
     <div class="col-sm-12">
         <div class="col-sm-12 padding0" style="margin-top: 2rem;">
             <div class="left_devices_panel">
-                <div id="callback-button" title="ADD NEW DEVICE"
+                <div id="callback-button" onclick="location.href='/sensors/add'" title="ADD NEW DEVICE"
                      class='btn '
                      style=' background: #4ea5ef; color:white;width: calc(100% - 2rem); margin-right: 2rem'><span
                         class="fa fa-plus"></span> New device
@@ -50,6 +50,7 @@
                 <table class="table table-big device_table" id='tableDevicesList'>
                     <thead>
                     <th class="pointer">FactoryId <span></span></th>
+                    <th class="pointer">Name <span></span></th>
                     <th class="pointer">Version<span></span></th>
                     <th class="pointer">COM Port<span></span></th>
                     <th class="pointer">Address<span></span></th>
@@ -65,9 +66,10 @@
                     <tbody>
                     <tr class="tr-left tr-interactive" th:each="element : ${sensors}">
                         <td data-tableexport-msonumberformat='\@' th:text="${element?.factoryId}"/>
-                        <td class="time_td_table" th:text="${element?.version}"/>
-                        <td class="time_td_table" th:text="${element?.port}"/>
-                        <td class="time_td_table" th:text="${element?.address}"/>
+                        <td data-tableexport-msonumberformat='\@' th:text="${element?.name}"/>
+                        <td data-tableexport-msonumberformat='\@' th:text="${element?.version}"/>
+                        <td data-tableexport-msonumberformat='\@' th:text="${element?.port}"/>
+                        <td data-tableexport-msonumberformat='\@' th:text="${element?.address}"/>
                         <td id="axisX" class="time_td_table"/>
                         <td id="axisY" class="time_td_table"/>
                         <td id="dateTime" class="time_td_table"/>
@@ -79,11 +81,11 @@
                             th:onclick="|window.location.href='@{/in_developing}'|"><span
                                 class="glyphicon glyphicon-send" title="Notification"></span></td>
                         <td data-tableexport-display="none" class="pointer"
-                            th:onclick="|window.location.href='@{/in_developing}'|"
+                            th:onclick="|window.location.href='@{/sensors/update/{factoryId}(factoryId = ${element.factoryId})}'|"
                         ><span class="glyphicon glyphicon-cog"
                                title="Edit"></span></td>
                         <td data-tableexport-display="none" class="pointer"
-                            th:onclick="|window.location.href='@{/in_developing}'|"
+                            th:onclick="|window.location.href='@{/sensors/delete/{factoryId}(factoryId = ${element.factoryId})}'|"
                         ><span
                                 class="glyphicon glyphicon-remove-sign" title="Delete device"></span></td>
                         <td data-tableexport-msonumberformat='\@' style="opacity: 0; max-width: 0px;"

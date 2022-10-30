@@ -12,7 +12,8 @@
                     <a href="/sensors" style="text-decoration: none">
                         <div class="btn btn-header">Sensors</div>
                     </a>
-                    <a href="/sensors_location" style="text-decoration: none">
+<!--                    <a href="/sensors_location/" style="text-decoration: none">-->
+                    <a th:onclick="|window.location.href='@{/sensors_location/{floorNumber}(floorNumber = Main)}'|" style="text-decoration: none">
                     <div class="btn btn-header">Location of sensors</div>
                     </a>
                     <a href="/users" style="text-decoration: none">

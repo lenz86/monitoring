@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1">
+    <title>Sensors Add</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css?V1.1.6_0" th:href="@{/css/style.css?V1.1.6_0}">
+
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container page">
+    <div class="col-sm-12">
+        <div class="col-sm-12 padding0" style="margin-top: 2rem;">
+            <div class="left_devices_panel">
+                <table class="table table-big device_table" id='tableDevicesList'>
+                    <thead>
+                    <th class="pointer">Sensor name<span></span></th>
+                    </thead>
+                    <tbody>
+                    <tr class="tr-left tr-interactive" th:each="element : ${sensors}">
+                        <td class="pointer" data-tableexport-msonumberformat='\@' th:text="${element?.factoryId}"
+                            th:onclick="|window.location.href='@{/sensors/update/{factoryId}(factoryId = ${element.factoryId})}'|"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="right_devices_panel">
+                <div class="container mt-5">
+                    <form th:action="@{/sensors/add}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <p class="text-header">SENSOR INFORMATION</p>
+                        <p class="text-header"> Sensor factoryId:</p>
+                        <p><input type="text" required size="40" name="factoryId" placeholder=""
+                                  th:value="${sensorForUpdate?.factoryId}"></p>
+                        <p class="text-header"> Sensor name:</p>
+                        <p><input type="text" size="40" name="name" placeholder=""
+                                  th:value="${sensorForUpdate?.name}"></p>
+                        <p class="text-header"> Port:</p>
+                        <p><input type="text" size="40" name="port" placeholder=""
+                                  th:value="${sensorForUpdate?.port}"></p>
+                        <p class="text-header"> Address:</p>
+                        <p><input type="text" size="40" name="address" placeholder=""
+                                  th:value="${sensorForUpdate?.address}"></p>
+                        <p class="text-header"> Version:</p>
+                        <p><input type="text" size="40" name="version" placeholder=""
+                                  th:value="${sensorForUpdate?.version}"></p>
+                        <button id="save-button" type="submit" title="Save sensor"
+                                class='btn'
+                                style=' background: #4ea5ef; color:white; margin-right: 2rem'><span
+                                class="fa fa-plus"></span> Save sensor
+                        </button>
+                        <br><br>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="container mt-5">-->
+<!--    <form method="post">-->
+<!--        <input type="text" name="name" placeholder="Введите название датчика" />-->
+<!--        <input type="text" name="factoryID" placeholder="Введите заводской номер датчика" />-->
+<!--        <input type="text" name="version" placeholder="Введите версию ПО" />-->
+<!--        <input type="text" name="port" placeholder="Введите номер порта" />-->
+<!--        <input type="text" name="address" placeholder="Введите логический адрес" />-->
+<!--        <button type="submit">Добавить датчик</button>-->
+<!--    </form>-->
+<!--    <div class="container mt-5">-->
+<!--        <h1>Датчики</h1>-->
+<!--        <div th:each="element : ${sensors}">-->
+<!--            <h3 th:text="${element.name}"/>-->
+<!--            <h3 th:text="${element.factoryID}"/>-->
+<!--            <h3 th:text="${element.version}"/>-->
+<!--            <h3 th:text="${element.port}"/>-->
+<!--            <h3 th:text="${element.address}"/>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+</body>
+</html>
